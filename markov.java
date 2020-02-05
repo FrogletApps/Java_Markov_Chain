@@ -39,7 +39,6 @@ public class markov {
             }
         }
         System.out.println(stringToInteger);
-
         //String to Integer HashMap
         counter = 0;
         HashMap<Integer, String> integerToString = new HashMap<Integer, String>();
@@ -52,7 +51,8 @@ public class markov {
         }
         System.out.println(integerToString);
 
-        Integer size = words.size();
+        //Add counts to count array
+        int size = stringToInteger.size();
         int[][] count = new int[size+1][size+1];
 
         for (int i=0; i<words.size()-1; i++){
@@ -60,14 +60,34 @@ public class markov {
             String secondWord = words.get(i+1);
             int firstWordInt = stringToInteger.get(firstWord);
             int secondWordInt = stringToInteger.get(secondWord);
-
-            //System.out.println(count[firstWordInt][secondWordInt]);
-            /*if (count[firstWordInt][secondWordInt]){
-                count[firstWordInt][secondWordInt] = 0;
-            }*/
             count[firstWordInt][secondWordInt] += 1;
             //System.out.println(count[firstWordInt][secondWordInt]);
         }
-        System.out.println(Arrays.toString(count));
+        //System.out.println(Arrays.deepToString(count));
+        printArray(count, size, size);
+
+
+        //Count the total in each row
+        int rowTotals[] = new int[size+1];
+        //Print row totals
+        for (int y=0; y<size; y++){
+            for (int x=0; x<size; x++){
+                rowTotals[y] += count[y][x];
+            }
+            System.out.println(rowTotals[y]);
+        }
+
+        //prob
+        int[][] prob = new int[size+1][size+1];
+    }
+
+    //Prints a 2D array as a square
+    private static void printArray(int[][] twoDArray, int xSize, int ySize){
+        for (int y=0; y<ySize; y++){
+            for (int x=0; x<xSize; x++){
+                System.out.print(twoDArray[y][x] + ", ");
+            }
+            System.out.println("");
+        }
     }
 }
