@@ -1,20 +1,13 @@
-import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class markov {
     public static void main(String[] args)throws Exception
     { 
         //Get words from file
-        File file = new File("./testFile.txt"); 
-        BufferedReader br = new BufferedReader(new FileReader(file)); 
-        String wholeString = "";
-        String st; 
-        while ((st = br.readLine()) != null) {
-            wholeString += st;
-        }
-        br.close();
+        String wholeString = new String(Files.readAllBytes(Paths.get("testFile.txt")));
 
         //Convert wholeString to lowercase
         wholeString = wholeString.toLowerCase();
