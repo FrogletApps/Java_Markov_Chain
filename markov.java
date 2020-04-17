@@ -84,6 +84,35 @@ public class markov {
             }
         }
         printArray(prob);
+
+        int sentenceSize = 10;
+        String[] sentence = new String[sentenceSize];
+        int wordInt = (int)Math.round(Math.random()*integerToString.size());
+        double randomProb = 0.0;
+        
+        for (int i=0; i<sentenceSize; i++){
+            System.out.println(wordInt);
+            sentence[i] = words.get(wordInt);
+            randomProb = Math.random();
+
+            int j = 0;
+            while (prob[j][wordInt] > randomProb){
+                System.out.println(words.get(j));
+                j++;
+            }
+                        
+            wordInt = j;
+
+            System.out.println("row = " + wordInt + " randomProb = " + randomProb);
+            System.out.println(words.get(wordInt));
+        }
+
+        System.out.println();
+
+        //Output the generated sentence
+        for (int k=0; k<sentenceSize; k++){
+            System.out.print(sentence[k] + " ");
+        }
     }
 
     //Prints a 2D array (integer)
