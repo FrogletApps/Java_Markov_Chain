@@ -42,7 +42,8 @@ public class markov {
 
         //Add counts to count array
         int size = stringToInteger.size();
-        int[][] count = new int[size+1][size+1];
+        System.out.println("Size = " + size);
+        int[][] count = new int[size][size];
 
         for (int i=0; i<words.size()-1; i++){
             String firstWord = words.get(i);
