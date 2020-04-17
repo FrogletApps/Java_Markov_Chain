@@ -57,7 +57,7 @@ public class markov {
             //System.out.println(count[firstWordInt][secondWordInt]);
         }
         //System.out.println(Arrays.deepToString(count));
-        printArray(count, size, size);
+        printArray(count);
 
 
         //Count the total in each row
@@ -74,8 +74,24 @@ public class markov {
         int[][] prob = new int[size+1][size+1];
     }
 
-    //Prints a 2D array as a square
-    private static void printArray(int[][] twoDArray, int xSize, int ySize){
+    //Prints a 2D array (integer)
+    private static void printArray(int[][] twoDArray){
+        int ySize = twoDArray.length;
+        int xSize = twoDArray[0].length;
+
+        for (int y=0; y<ySize; y++){
+            for (int x=0; x<xSize; x++){
+                System.out.print(twoDArray[y][x] + ", ");
+            }
+            System.out.println("");
+        }
+    }
+
+    //Prints a 2D array (double)
+    private static void printArray(double[][] twoDArray){
+        int ySize = twoDArray.length;
+        int xSize = twoDArray[0].length;
+
         for (int y=0; y<ySize; y++){
             for (int x=0; x<xSize; x++){
                 System.out.print(twoDArray[y][x] + ", ");
