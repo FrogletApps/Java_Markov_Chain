@@ -9,14 +9,13 @@ public class markov {
         String wholeString = new String(Files.readAllBytes(Paths.get("testFile.txt"))).toLowerCase();
         System.out.println("1: " + wholeString);
 
-
-        //Put words into arraylist
+        //Put words into arraylist (trim() removes new lines)
         ArrayList<String> words = new ArrayList<String>();
-        for(String word : wholeString.split(" ")) {
-            words.add(word);
+        //Split on one or more whitespaces
+        for(String word : wholeString.split("\\s+")) { 
+            words.add(word.trim());
         }
-        System.out.println(words);
-
+        System.out.println("2: " + words);
 
         //String to Integer HashMap
         Integer counter = 0;
