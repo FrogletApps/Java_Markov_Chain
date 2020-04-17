@@ -73,32 +73,17 @@ public class markov {
         int x = 0;
         double[] cumulativeProb = new double[size];
 
-        /*double bleep = count[y][x];
-        double bloop = rowTotals[y];
-        double blarp = cumulativeProb[y];*/
-
-        /*for (int i=0; i < size; i++){
-            prob[i][0] = 2;
-        }
-        printArray(prob);*/
-
         for (y=0; y<size; y++){
             for (x=0; x<size; x++){
-                /*bleep = count[y][x];
-                bloop = rowTotals[y];
-                blarp = cumulativeProb[y];
-                prob[y][x+1] = (bleep/bloop) + blarp;
-                blarp = prob[y][x+1];*/
                 prob[y][x+1] = Math.round(((double)count[y][x] / (double)rowTotals[y]) + cumulativeProb[y]);
                 cumulativeProb[y] = prob[y][x+1];
-                System.out.println("x = " + x + " y = " + y);
+                /*System.out.println("x = " + x + " y = " + y);
                 System.out.println("currentVal = " + prob[y][x]);
-                System.out.println("cum = " + cumulativeProb[y]);
+                System.out.println("cumulative = " + cumulativeProb[y]);
                 printArray(prob);
-                System.out.println();
+                System.out.println();*/
             }
         }
-
         printArray(prob);
     }
 
