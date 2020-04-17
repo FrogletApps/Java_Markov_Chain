@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.lang.*;
 
 public class markov {
     public static void main(String[] args)throws Exception { 
@@ -75,7 +74,7 @@ public class markov {
 
         for (y=0; y<size; y++){
             for (x=0; x<size; x++){
-                prob[y][x+1] = Math.round(((double)count[y][x] / (double)rowTotals[y]) + cumulativeProb[y]);
+                prob[y][x+1] = ((double)count[y][x] / (double)rowTotals[y]) + cumulativeProb[y];
                 cumulativeProb[y] = prob[y][x+1];
                 /*System.out.println("x = " + x + " y = " + y);
                 System.out.println("currentVal = " + prob[y][x]);
