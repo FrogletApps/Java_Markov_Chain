@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.lang.*;
 
 public class markov {
     public static void main(String[] args)throws Exception { 
@@ -67,8 +68,38 @@ public class markov {
             System.out.println(rowTotals[y]);
         }
 
-        //prob
-        int[][] prob = new int[size+1][size+1];
+        double[][] prob = new double[size][size+1];
+        int y = 0;
+        int x = 0;
+        double[] cumulativeProb = new double[size];
+
+        /*double bleep = count[y][x];
+        double bloop = rowTotals[y];
+        double blarp = cumulativeProb[y];*/
+
+        /*for (int i=0; i < size; i++){
+            prob[i][0] = 2;
+        }
+        printArray(prob);*/
+
+        for (y=0; y<size; y++){
+            for (x=0; x<size; x++){
+                /*bleep = count[y][x];
+                bloop = rowTotals[y];
+                blarp = cumulativeProb[y];
+                prob[y][x+1] = (bleep/bloop) + blarp;
+                blarp = prob[y][x+1];*/
+                prob[y][x+1] = Math.round(((double)count[y][x] / (double)rowTotals[y]) + cumulativeProb[y]);
+                cumulativeProb[y] = prob[y][x+1];
+                System.out.println("x = " + x + " y = " + y);
+                System.out.println("currentVal = " + prob[y][x]);
+                System.out.println("cum = " + cumulativeProb[y]);
+                printArray(prob);
+                System.out.println();
+            }
+        }
+
+        printArray(prob);
     }
 
     //Prints a 2D array (integer)
