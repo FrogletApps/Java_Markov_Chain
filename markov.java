@@ -4,14 +4,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class markov {
-    public static void main(String[] args)throws Exception
-    { 
-        //Get words from file
-        String wholeString = new String(Files.readAllBytes(Paths.get("testFile.txt")));
+    public static void main(String[] args)throws Exception { 
+        //Get words from file and set to lowercase
+        String wholeString = new String(Files.readAllBytes(Paths.get("testFile.txt"))).toLowerCase();
+        System.out.println("1: " + wholeString);
 
-        //Convert wholeString to lowercase
-        wholeString = wholeString.toLowerCase();
-        System.out.println(wholeString);
 
         //Put words into arraylist
         ArrayList<String> words = new ArrayList<String>();
