@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 public class markov {
     public static void main(String[] args)throws Exception { 
         //Get words from file and set to lowercase
-        String wholeString = new String(Files.readAllBytes(Paths.get("testFile.txt"))).toLowerCase();
+        String wholeString = new String(Files.readAllBytes(Paths.get("testFile2.txt"))).toLowerCase();
         System.out.println("1: " + wholeString);
 
         //Put words into arraylist (trim() removes new lines)
@@ -91,20 +91,18 @@ public class markov {
         double randomProb = 0.0;
         
         for (int i=0; i<sentenceSize; i++){
-            System.out.println(wordInt);
-            sentence[i] = words.get(wordInt);
+            System.out.println(wordInt + " " + integerToString.get(wordInt));
+            System.out.println();
+            sentence[i] = integerToString.get(wordInt);
             randomProb = Math.random();
 
-            int j = 0;
-            while (prob[j][wordInt] > randomProb){
-                System.out.println(words.get(j));
-                j++;
+            for (int j=1; j<integerToString.size(); j++){
+                System.out.println(prob[wordInt][j] + " < " + randomProb + " ... " + j + " " + wordInt + " " + integerToString.get(j - 1));
+                if (prob[wordInt][j] > randomProb){
+                    wordInt = j - 1;
+                    break;
+                }
             }
-                        
-            wordInt = j;
-
-            System.out.println("row = " + wordInt + " randomProb = " + randomProb);
-            System.out.println(words.get(wordInt));
         }
 
         System.out.println();
