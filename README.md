@@ -1,2 +1,3 @@
-# Java_Markov_Chain
- 
+# Java Markov Chain
+
+A simple Markov Chain implemented in Java
