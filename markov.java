@@ -51,9 +51,7 @@ public class markov {
             int firstWordInt = stringToInteger.get(firstWord);
             int secondWordInt = stringToInteger.get(secondWord);
             count[firstWordInt][secondWordInt] += 1;
-            //System.out.println(count[firstWordInt][secondWordInt]);
         }
-        //System.out.println(Arrays.deepToString(count));
         printArray(count);
 
 
@@ -76,11 +74,6 @@ public class markov {
             for (x=0; x<size; x++){
                 prob[y][x+1] = ((double)count[y][x] / (double)rowTotals[y]) + cumulativeProb[y];
                 cumulativeProb[y] = prob[y][x+1];
-                /*System.out.println("x = " + x + " y = " + y);
-                System.out.println("currentVal = " + prob[y][x]);
-                System.out.println("cumulative = " + cumulativeProb[y]);
-                printArray(prob);
-                System.out.println();*/
             }
         }
         printArray(prob);
